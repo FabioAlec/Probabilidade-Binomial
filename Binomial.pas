@@ -54,7 +54,8 @@ type
     function CalcularUmMenosPElevadoNMenosK: Double;
     function CalcularFatorial(Valor: Integer): Double;
     function CalcularPotencia(expoente, base: Double): Double;
-    function CalcularQuantidadeVezesVetor(eValorDeP: Double; eFrequencia, eQuantidadeVezes: Integer): Double;
+    function CalcularQuantidadeVezesVetor(eValorDePAcumulado: Double; eQuantidadeVezes: Integer): Double;
+    function CalcularValorDeVezesNoVetor(eValorDePAcumulado: Double; eFrequencia: Integer): Double;
   public
     { Public declarations }
   end;
@@ -80,7 +81,7 @@ procedure TForm1.btnCalcularAcumClick(Sender: TObject);
 var
   I, II, Count,
   aFrequencia: Integer;
-  aValorDeP: Double;
+  aValorDeP, aValorAcumuladoAux, aValorAcumulado: Double;
   VetorValores : array of Double;
 begin
   aFrequencia := StrToInt(edValorNAcum.Text);
@@ -90,38 +91,71 @@ begin
   else
     aValorDeP := (StrToFloat(edValorPDecimalAcum.Text)/100);
 
-  Count := 0;
+  Count               := 0;
+  aValorAcumuladoAux  := 0;
+  aValorAcumulado     := 0;
 
-  SetLength(VetorValores, aFrequencia+1);
+  SetLength(VetorValores, aFrequencia);
+
+  aValorAcumulado := CalcularValorDeVezesNoVetor(aValorDeP, aFrequencia);
   for I := 0 to aFrequencia do
   begin
-    if Count = 0 then
+    if Count = aFrequencia then
     begin
-      for II := 0 to Count do
-      begin
-        Count := 1;
-        VetorValores[I] := CalcularQuantidadeVezesVetor(aValorDeP, aFrequencia, 0);
-        MemResultado.Lines.Add('P('+IntToStr(I)+') = ' + FloatToStr(VetorValores[I]));
-      end;
+      VetorValores[I] := CalcularQuantidadeVezesVetor(aValorAcumulado, 1);
+      MemResultado.Lines.Add('P('+IntToStr(I)+') = ' + FloatToStr(VetorValores[I]));
+    end
+    else if Count = 0 then
+    begin
+      Inc(Count);
+      VetorValores[I] := CalcularQuantidadeVezesVetor(aValorAcumulado, 1);
+      MemResultado.Lines.Add('P('+IntToStr(I)+') = ' + FloatToStr(VetorValores[I]));
+    end
+    else
+    begin
+      Inc(Count);
+      VetorValores[I] := CalcularQuantidadeVezesVetor(aValorAcumulado, aFrequencia);
+      MemResultado.Lines.Add('P('+IntToStr(I)+') = ' + FloatToStr(VetorValores[I]));
     end;
   end;
+
+  MemResultado.Lines.Add('Valores na frequência acumulada: ');
+  for I := 0 to aFrequencia do
+  begin
+    aValorAcumuladoAux := (aValorAcumuladoAux + VetorValores[I]);
+    MemResultado.Lines.Add('P('+IntToStr(I)+') = ' + FloatToStr(aValorAcumuladoAux));
+  end;
+
 end;
 
-function TForm1.CalcularQuantidadeVezesVetor(eValorDeP: Double; eFrequencia, eQuantidadeVezes: Integer): Double;
+function TForm1.CalcularValorDeVezesNoVetor(eValorDePAcumulado: Double; eFrequencia: Integer): Double;
 var
-  I, II : Integer;
+  I : Integer;
+  aValorPAux,
+  aValordePAuxMult : Double;
+begin
+  aValordePAuxMult  := eValorDePAcumulado;
+
+  for I := 1 to (eFrequencia-1) do
+  begin
+    aValordePAuxMult := (aValordePAuxMult * eValorDePAcumulado);
+  end;
+
+  Result := aValordePAuxMult;
+end;
+
+function TForm1.CalcularQuantidadeVezesVetor(eValorDePAcumulado: Double; eQuantidadeVezes: Integer): Double;
+var
+  I : Integer;
   aValorAuxMult, aValorAuxSom: Double;
 begin
-  aValorAuxMult := 0;
-  aValorAuxSom := 0;
-  for I := 0 to eFrequencia do
+  aValorAuxMult := eValorDePAcumulado;
+
+  for I := 1 to (eQuantidadeVezes) do
   begin
-    aValorAuxMult := aValorAuxMult * eValorDeP;
+    aValorAuxSom := (aValorAuxSom + aValorAuxMult);
   end;
-  for II := 0 to eQuantidadeVezes do
-  begin
-    aValorAuxSom := aValorAuxSom + aValorAuxMult;
-  end;
+
   Result := aValorAuxSom;
 end;
 

@@ -1,10 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2020/09/11 09:06:27.000.894,=C:\Users\fbaci\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2020/10/28 09:03:37.000.474,=C:\Users\fbaci\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2020/10/28 10:56:46.000.530,C:\Users\fbaci\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\fbaci\Desktop\Binomial\Binomial.pas</Transaction>
-    <Transaction>2020/10/28 10:56:46.000.530,C:\Users\fbaci\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\fbaci\Desktop\Binomial\Binomial.dfm</Transaction>
-    <Transaction>2020/10/28 10:57:06.000.785,C:\Users\fbaci\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\fbaci\Desktop\Binomial\bino.dproj</Transaction>
+    <Transaction>2020/10/28 10:56:46.000.530,C:\Users\fbaci\Desktop\Binomial\Binomial.pas=C:\Users\fbaci\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/28 10:56:46.000.530,C:\Users\fbaci\Desktop\Binomial\Binomial.dfm=C:\Users\fbaci\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2020/10/28 10:57:06.000.785,C:\Users\fbaci\Desktop\Binomial\bino.dproj=C:\Users\fbaci\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
   </Transactions>
 </BorlandProject>

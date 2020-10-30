@@ -2,9 +2,10 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Align = alCustom
+  BorderStyle = bsSingle
   Caption = 'Calculadora de Probabilidade Binomial'
-  ClientHeight = 610
-  ClientWidth = 761
+  ClientHeight = 620
+  ClientWidth = 771
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,19 +13,16 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   PixelsPerInch = 96
   TextHeight = 13
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 761
-    Height = 610
+    Width = 771
+    Height = 620
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 6
-    ExplicitTop = 5
-    ExplicitWidth = 737
-    ExplicitHeight = 444
     object Panel1: TPanel
       Left = 0
       Top = 0
@@ -292,6 +290,7 @@ object Form1: TForm1
     Height = 609
     Align = alCustom
     Enabled = False
+    ScrollBars = ssVertical
     TabOrder = 1
   end
 end
