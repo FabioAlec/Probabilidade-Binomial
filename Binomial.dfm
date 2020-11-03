@@ -188,7 +188,7 @@ object Form1: TForm1
         Width = 131
         Height = 25
         Caption = 'Limpar'
-        TabOrder = 0
+        TabOrder = 6
         OnClick = btLimparClick
       end
       object btnCalcular: TButton
@@ -197,7 +197,7 @@ object Form1: TForm1
         Width = 123
         Height = 25
         Caption = 'Calcular'
-        TabOrder = 1
+        TabOrder = 5
         OnClick = btnCalcularClick
       end
       object edValorK: TEdit
@@ -205,35 +205,40 @@ object Form1: TForm1
         Top = 239
         Width = 121
         Height = 21
-        TabOrder = 2
+        TabOrder = 4
+        OnKeyPress = edValorKKeyPress
       end
       object edValorN: TEdit
         Left = 6
         Top = 65
         Width = 121
         Height = 21
-        TabOrder = 3
+        TabOrder = 0
+        OnKeyPress = edValorNKeyPress
       end
       object edValorPBaixo: TEdit
         Left = 6
         Top = 175
         Width = 35
         Height = 21
-        TabOrder = 4
+        TabOrder = 2
+        OnKeyPress = edValorPBaixoKeyPress
       end
       object edValorPCima: TEdit
         Left = 6
         Top = 147
         Width = 35
         Height = 21
-        TabOrder = 5
+        TabOrder = 1
+        OnKeyPress = edValorPCimaKeyPress
       end
       object edValorPDecimal: TEdit
         Left = 70
         Top = 152
         Width = 95
         Height = 21
-        TabOrder = 6
+        TabOrder = 3
+        OnKeyPress = edValorPDecimalKeyPress
       end
       object edValorPCimaAcum: TEdit
         Left = 3
@@ -241,6 +246,7 @@ object Form1: TForm1
         Width = 35
         Height = 21
         TabOrder = 7
+        OnKeyPress = edValorPCimaAcumKeyPress
       end
       object edValorPBaixoAcum: TEdit
         Left = 3
@@ -248,6 +254,7 @@ object Form1: TForm1
         Width = 35
         Height = 21
         TabOrder = 8
+        OnKeyPress = edValorPBaixoAcumKeyPress
       end
       object edValorPDecimalAcum: TEdit
         Left = 67
@@ -255,6 +262,7 @@ object Form1: TForm1
         Width = 95
         Height = 21
         TabOrder = 9
+        OnKeyPress = edValorPDecimalAcumKeyPress
       end
       object edValorNAcum: TEdit
         Left = 5
@@ -262,6 +270,7 @@ object Form1: TForm1
         Width = 121
         Height = 21
         TabOrder = 10
+        OnKeyPress = edValorNAcumKeyPress
       end
       object btnCalcularAcum: TButton
         Left = 6

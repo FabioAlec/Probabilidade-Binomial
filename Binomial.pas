@@ -48,6 +48,15 @@ type
     procedure btLimparClick(Sender: TObject);
     procedure btnCalcularClick(Sender: TObject);
     procedure btnCalcularAcumClick(Sender: TObject);
+    procedure edValorNKeyPress(Sender: TObject; var Key: Char);
+    procedure edValorPCimaKeyPress(Sender: TObject; var Key: Char);
+    procedure edValorPBaixoKeyPress(Sender: TObject; var Key: Char);
+    procedure edValorPDecimalKeyPress(Sender: TObject; var Key: Char);
+    procedure edValorKKeyPress(Sender: TObject; var Key: Char);
+    procedure edValorPCimaAcumKeyPress(Sender: TObject; var Key: Char);
+    procedure edValorPBaixoAcumKeyPress(Sender: TObject; var Key: Char);
+    procedure edValorPDecimalAcumKeyPress(Sender: TObject; var Key: Char);
+    procedure edValorNAcumKeyPress(Sender: TObject; var Key: Char);
   private
     function CalcularFatorialCvirgulaK: Double;
     function CalcularPElevadoK: Double;
@@ -56,6 +65,7 @@ type
     function CalcularPotencia(expoente, base: Double): Double;
     function CalcularQuantidadeVezesVetor(eValorDePAcumulado: Double; eQuantidadeVezes: Integer): Double;
     function CalcularValorDeVezesNoVetor(eValorDePAcumulado: Double; eFrequencia: Integer): Double;
+    procedure CalcularProbaAcumulada;
   public
     { Public declarations }
   end;
@@ -84,6 +94,10 @@ var
   aValorDeP, aValorAcumuladoAux, aValorAcumulado: Double;
   VetorValores : array of Double;
 begin
+  if MemResultado.Lines.Text <> EmptyStr then
+    MemResultado.Lines.Add('---------------------------------------------------');
+  MemResultado.Lines.Add('LEI BINOMIAL NORMAL');
+
   aFrequencia := StrToInt(edValorNAcum.Text);
 
   if Trim(edValorPCimaAcum.Text) <> EmptyStr then
@@ -105,7 +119,8 @@ begin
       VetorValores[I] := CalcularQuantidadeVezesVetor(aValorAcumulado, 1);
       MemResultado.Lines.Add('P('+IntToStr(I)+') = ' + FloatToStr(VetorValores[I]));
     end
-    else if Count = 0 then
+    else
+    if Count = 0 then
     begin
       Inc(Count);
       VetorValores[I] := CalcularQuantidadeVezesVetor(aValorAcumulado, 1);
@@ -166,6 +181,11 @@ var
   aValorUmMenosPElevadoNMenosK,
   aValorDaProbabilidade: Double;
 begin
+  if MemResultado.Lines.Text <> EmptyStr then
+    MemResultado.Lines.Add('---------------------------------------------------');
+  MemResultado.Lines.Add('LEI BINOMIAL INDIVIDUAL');
+
+
   aValorFatorialCVigulaK       := CalcularFatorialCvirgulaK;
   aValorPElevadoK              := CalcularPElevadoK;
   aValorUmMenosPElevadoNMenosK := CalcularUmMenosPElevadoNMenosK;
@@ -174,6 +194,12 @@ begin
 
   MemResultado.Lines.Add('Valor Probabilidade é: ' + FloatToStr(aValorDaProbabilidade));
   MemResultado.Lines.Add('Valor Probabilidade * 100 é: ' + FloatToStr(StrToFloat(FormatFloat('#0.00', aValorDaProbabilidade))*100)+ '%.');
+
+end;
+
+procedure TForm1.CalcularProbaAcumulada;
+begin
+
 end;
 
 function TForm1.CalcularFatorialCvirgulaK: Double;
@@ -261,4 +287,59 @@ begin
 
   Result := Potencia;
 end;
+
+procedure TForm1.edValorKKeyPress(Sender: TObject; var Key: Char);
+begin
+  if ((key in ['0'..'9'] = false) and (word(key) <> vk_back)) then
+    key := #0;
+end;
+
+procedure TForm1.edValorNAcumKeyPress(Sender: TObject; var Key: Char);
+begin
+  if ((key in ['0'..'9'] = false) and (word(key) <> vk_back)) then
+   key := #0;
+end;
+
+procedure TForm1.edValorNKeyPress(Sender: TObject; var Key: Char);
+begin
+  if ((key in ['0'..'9'] = false) and (word(key) <> vk_back)) then
+    key := #0;
+end;
+
+procedure TForm1.edValorPBaixoAcumKeyPress(Sender: TObject; var Key: Char);
+begin
+  if ((key in ['0'..'9'] = false) and (word(key) <> vk_back)) then
+   key := #0;
+end;
+
+procedure TForm1.edValorPBaixoKeyPress(Sender: TObject; var Key: Char);
+begin
+  if ((key in ['0'..'9'] = false) and (word(key) <> vk_back)) then
+   key := #0;
+end;
+
+procedure TForm1.edValorPCimaAcumKeyPress(Sender: TObject; var Key: Char);
+begin
+  if ((key in ['0'..'9'] = false) and (word(key) <> vk_back)) then
+   key := #0;
+end;
+
+procedure TForm1.edValorPCimaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if ((key in ['0'..'9'] = false) and (word(key) <> vk_back)) then
+    key := #0;
+end;
+
+procedure TForm1.edValorPDecimalAcumKeyPress(Sender: TObject; var Key: Char);
+begin
+  if ((key in ['0'..'9', ','] = false) and (word(key) <> vk_back)) then
+   key := #0;
+end;
+
+procedure TForm1.edValorPDecimalKeyPress(Sender: TObject; var Key: Char);
+begin
+  if ((key in ['0'..'9', ','] = false) and (word(key) <> vk_back)) then
+    key := #0;
+end;
+
 end.
